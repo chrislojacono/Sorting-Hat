@@ -1,3 +1,5 @@
+'use strict';
+
 // THIS IS THE FIRST BUTTON CLICK
 const letsStartSorting = () => {
   document
@@ -15,32 +17,40 @@ const sortingForm = () => {
                         <div class="form-inline">
                             <div class="col-auto">
                                 <label class="sr-only" for="inlineFormInput">Name</label>
-                                <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Harry Potter" required>
+                                <input type="text" class="form-control mb-2" id="FormInput" placeholder="Harry Potter" required>
                             </div>
-                            <div class="col-auto" id="sort-buttondiv">
+                            <div class="col-auto id="sort-buttondiv">
                                 <button type="submit" class="btn btn-primary mb-2 id="sort-button">Sort!</button>
                             </div>
                         </div>
-                    </form>`;
+                    </form>`
   printToDom("nameForm", domString);
   buttonEvents();
 };
 
-// THIS HOLDS BUTTON EVENTS
-const buttonEvents = () => {
-  document.querySelector("#student-card").addEventListener("click", reset);
-  document.querySelector("#sort-button").addEventListener("click", getStudentName);
-  document.querySelector("#sort-button").addEventListener("click", houseCards);
-};
-
-// THIS IS TO FORM THE ARRAY OF DATA INPUT
-let studentInput = [ ];
+// THIS CAPTURES THE STUDENT INPUT
+let studentInput = [];
 
 
 const getStudentName = () => {
-  const name = document.querySelector("#inlineFormInput").value;
-  studentInput.push({ studentName: name, house: randomizer()});
+  const name = document.querySelector("#FormInput").value;
+  let studentObject = { studentName: name, house: randomizer() }
+  studentInput.push(studentObject);
+
+
+houseCards();
+    
 };
+
+// THIS HOLDS BUTTON EVENTS
+const buttonEvents = () => {
+//   document.querySelector("#student-card").addEventListener("click", reset);
+  document.querySelector("#sort-button").addEventListener("click", getStudentName);
+//   document.querySelector("#sort-button").addEventListener("click", houseCards);
+};
+
+
+
 
 
 // THIS SPITS OUT A RANDOM HOUSE
@@ -52,14 +62,14 @@ const randomizer = () => {
 
 // THIS PRINTS THE CARDS
 const houseCards = () => {
-  let domString = "";
+  let domString = '';
   for (let i = 0; i < studentInput.length; i++){
-    if (studentInput[i].name){
+    if(studentInput[i].studentName){
       domString += `<div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                    <h5 class="card-title">${studentNameToInput[i].house}</h5>
-                    <h3 id="studentsNameCard>${studentNameToInput[i].name}</h3>
+                    <h2 class="card-title">${studentNameToInput[i].house}</h2>
+                    <h3 id="studentsNameCard>${studentNameToInput[i].studentName}</h3>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     </div>
                     </div>`;
@@ -69,6 +79,7 @@ const houseCards = () => {
 }
 const reset = () => {
   document.querySelector("#student-card").reset();
+  
 };
 
 const init = () => {

@@ -75,6 +75,7 @@ const houseCards = (e) => {
       }
     }
     printToDom("#cardSection", domString);
+    expelStudent();
   }
 };
 const expelStudent = (e) => {

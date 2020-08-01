@@ -10,20 +10,21 @@ const printToDom = (divId, textToPrint) => {
 };
 // THIS PRINTS THE INPUT BOX WHEN THE FIRST BUTTON IS CLICKED
 const sortingForm = (e) => {
+  e.preventDefault();
   let buttonId = e.target.id;
   if (buttonId === "sortButton") {
-    let domString = `<div id="student-card">
+    let domString = `<form id="student-card">
                         <h2>Enter First Year's Name:</h2>
                         <div class="form-inline">
                             <div class="col-auto">
                                 <label class="sr-only" for="inlineFormInput">Name</label>
-                                <input type="text" class="form-control mb-2" onfocus="this.value=''" id="formInput" placeholder="Harry Potter" required>
+                                <input type="text" class="form-control mb-2" onClick="this.form.reset()" onfocus="this.value=''" id="formInput" placeholder="Harry Potter" required>
                             </div>
                             <div class="col-auto id="sort-buttondiv">
                                 <button type="reset" class="btn btn-primary mb-2" id="sort-button">Sort!</button>
                             </div>
                         </div>
-                    </div>`;
+                    </form>`;
     printToDom("#nameForm", domString);
     buttonEvents();
   }
@@ -48,8 +49,19 @@ const buttonEvents = () => {
   let el = document.querySelector("#nameForm");
   el.addEventListener("click", getStudentName);
   el.addEventListener("click", houseCards);
-  let input = document.querySelector("#inputForm");
+  let formCheck = document.querySelector('#sort-button');
+  formCheck.addEventListener('click', emptyForm)
 };
+
+// helpful message for an empty form
+const emptyForm = () => {
+  let uname = document.getElementById('formInput').value;
+      if (uname === ''){
+          alert("Put 'yer name in the hat!");
+          return false; 
+      }
+      return true;
+  };
 
 // THIS SPITS OUT A RANDOM HOUSE
 const randomizer = () => {

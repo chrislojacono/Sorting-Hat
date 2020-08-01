@@ -14,7 +14,7 @@ const sortingForm = (e) => {
   let buttonId = e.target.id;
   if (buttonId === "sortButton") {
     let domString = `<form id="student-card">
-                        <h2>Enter First Year's Name:</h2>
+                        <h2 class="formhead">Enter First Year's Name:</h2>
                         <div class="form-inline">
                             <div class="col-auto">
                                 <label class="sr-only" for="inlineFormInput">Name</label>
@@ -75,7 +75,7 @@ const houseCards = (e) => {
   let domString = "";
   for (let i = 0; i < studentInput.length; i++) {
     if (studentInput[i].studentName) {
-      domString += `<div class="card" style="width: 18rem;">
+      domString += `<div class="card ${studentInput[i].house}" style="width: 18rem;">
                     <img src="images/${studentInput[i].house}.png" class="card-img-top" alt="Hogwarts House">
                     <div class="card-body">
                     <h2 class="card-title">${studentInput[i].house}</h2>

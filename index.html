@@ -11,11 +11,13 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Vollkorn:ital@1&display=swap" rel="stylesheet">
   
   </head>
   <body>
     <div class="jumbotron">
       <h1 class="display-4">Welcome to Hogwarts</h1>
+      <img class="sortinghatpic" src="images/sortinghat.png" alt="Soreting Hat">
       <p class="lead">
         “A thousand years or more ago,
         When I was newly sewn,
@@ -59,10 +61,18 @@
         <button class="btn btn-primary btn-lg" role="button" id="sortButton">
           Let's Start Sorting!
         </button>
+        <div class="wandDiv">
+          <div class="veil">
+            <div class="stone"></div>
+            <div class="wand"></div>
+        </div>
+      </div>
       </div>
     </div>
     <div class="container" id="nameForm"></div>
     <div class="container" id="cardSection"></div>
+
+   
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

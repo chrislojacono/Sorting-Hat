@@ -9,8 +9,10 @@ const printToDom = (divId, textToPrint) => {
   selectedDiv.innerHTML = textToPrint;
 };
 // THIS PRINTS THE INPUT BOX
-const sortingForm = () => {
-  let domString = `<form id="student-card">
+const sortingForm = (e) => {
+  let buttonId = e.target.id;
+  if (buttonId === "sortButton") {
+    let domString = `<form id="student-card">
                         <h2>Enter First Year's Name:</h2>
                         <div class="form-inline">
                             <div class="col-auto">
@@ -18,12 +20,13 @@ const sortingForm = () => {
                                 <input type="text" class="form-control mb-2" id="FormInput" placeholder="Harry Potter" required>
                             </div>
                             <div class="col-auto id="sort-buttondiv">
-                                <button type="submit" class="btn btn-primary mb-2 id="sort-button">Sort!</button>
+                                <button class="btn btn-primary mb-2" id="sort-button">Sort!</button>
                             </div>
                         </div>
                     </form>`;
-  printToDom("#nameForm", domString);
-  buttonEvents();
+    printToDom("#nameForm", domString);
+    buttonEvents();
+  }
 };
 
 // THIS CAPTURES THE STUDENT INPUT
@@ -31,7 +34,7 @@ let studentInput = [];
 
 const getStudentName = (e) => {
   let buttonId = e.target.id;
-  if (buttonId === "sort-buttondiv") {
+  if (buttonId === "sort-button") {
     const name = document.querySelector("#FormInput").value;
     let studentObject = { studentName: name, house: randomizer() };
     studentInput.push(studentObject);
@@ -44,7 +47,7 @@ const getStudentName = (e) => {
 const buttonEvents = () => {
   let el = document.querySelector("#nameForm");
 
-  //   document.querySelector("#student-card").addEventListener("click", reset);
+  // document.querySelector("#student-card").addEventListener("click", resetInput);
   el.addEventListener("click", getStudentName);
   document.querySelector("#cardSection").addEventListener("click", houseCards);
 };
@@ -67,8 +70,8 @@ const houseCards = (e) => {
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
                     <h2 class="card-title">${studentInput[i].house}</h2>
-                    <h3 id="studentsNameCard>${studentInput[i].studentName}</h3>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <h3 id="studentsNameCard">${studentInput[i].studentName}</h3>
+                    
                     <button id="expel"> EXPEL! </button>
                     </div>
                     </div>`;
@@ -79,15 +82,15 @@ const houseCards = (e) => {
   }
 };
 const expelStudent = (e) => {
-    const ctype = e.target.type;
-    const target = e.target.id;
+  const ctype = e.target.type;
+  const target = e.target.id;
 
-    if (ctype === 'button'){
-        studentNames.splice(target, 1);
-        houseCards();
-    }
-}
-const reset = () => {
+  if (ctype === "button") {
+    studentInput.splice(target, 1);
+    houseCards();
+  }
+};
+const resetInput = () => {
   document.querySelector("#nameForm").reset();
 };
 

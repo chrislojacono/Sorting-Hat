@@ -13,7 +13,7 @@ const sortingForm = (e) => {
   e.preventDefault();
   let buttonId = e.target.id;
   if (buttonId === "sortButton") {
-    let domString = `<form id="student-card">
+    let domString = `<form id="student-card" onSubmit="return false;">
                         <h2 class="formhead">Enter First Year's Name:</h2>
                         <div class="form-inline">
                             <div class="col-auto">
@@ -81,7 +81,7 @@ const houseCards = (e) => {
                     <h2 class="card-title">${studentInput[i].house}</h2>
                     <h3 id="studentsNameCard">${studentInput[i].studentName}</h3>
                     <div>
-                    <button id="expel"> EXPEL! </button>
+                    <button type="button" id="${i}"> EXPEL! </button>
                     </div>
                     </div>
                     </div>`;
@@ -96,10 +96,10 @@ const houseCards = (e) => {
 
 // This tells the computer to execute this function when the target is clicking the expel button
 const expelStudent = (e) => {
-  let buttonId = e.target.id;
+  let buttonId = e.target.type;
 
-  if (buttonId === "expel") {
-    studentInput.splice(e.target, 1);
+  if (buttonId === "button") {
+    studentInput.splice(e.target.id, 1);
     houseCards();
   }
 };

@@ -18,8 +18,12 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 1px gold solid;
+  
   border-radius: 10%;
+  -webkit-box-shadow: 3px 13px 28px -5px rgba(0,0,0,0.75);
+-moz-box-shadow: 3px 13px 28px -5px rgba(0,0,0,0.75);
+box-shadow: 3px 13px 28px -5px rgba(0,0,0,0.75);
+margin-bottom: 10px;
 }
 .Gryffindor{
     background-color: 	#FFC500;
@@ -50,7 +54,11 @@ body {
 .container {
   text-align: center;
 }
+#sortButton{
+  margin: 10px;
+}
 h1{
+    text-shadow: 2px 1px grey;
     letter-spacing: .25rem;
     font-size: 70px;
 }

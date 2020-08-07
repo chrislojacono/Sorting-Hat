@@ -2,6 +2,7 @@ body {
   background-image: url(images/wigwag.jpg);
   background-size: inherit;
   font-family: "Vollkorn", serif;
+  text-align: center;
 }
 .jumbotron {
   background-color: #5c0000;
